@@ -1,0 +1,20 @@
+{
+  "name": "vidblitz",
+  "owner": {
+    "name": "Vidblitz",
+    "email": "support@vidblitz.ai"
+  },
+  "metadata": {
+    "description": "Vidblitz for Claude Code: faceless YouTube videos from a topic or your own script."
+  },
+  "plugins": [
+    {
+      "name": "vidblitz",
+      "source": "./",
+      "description": "Make faceless YouTube videos from a topic or a script you write with Claude, with Vidblitz.",
+      "version": "0.1.0",
+      "homepage": "https://vidblitz.ai/developers",
+      "category": "productivity"
+    }
+  ]
+}

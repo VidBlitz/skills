@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "vidblitz": {
+      "type": "http",
+      "url": "https://vidblitz.ai/mcp"
+    }
+  }
+}

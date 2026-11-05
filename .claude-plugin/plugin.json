@@ -1,0 +1,14 @@
+{
+  "name": "vidblitz",
+  "version": "0.1.0",
+  "description": "Make faceless YouTube videos from a topic or a script you write with Claude, with Vidblitz. Connects the Vidblitz MCP server and teaches your agent to read out the quote and wait for your go before spending credits.",
+  "author": {
+    "name": "Vidblitz",
+    "email": "support@vidblitz.ai",
+    "url": "https://vidblitz.ai"
+  },
+  "homepage": "https://vidblitz.ai/developers",
+  "repository": "https://github.com/vidblitz/skills",
+  "license": "MIT",
+  "keywords": ["youtube", "faceless video", "video generation", "script to video", "mcp"]
+}

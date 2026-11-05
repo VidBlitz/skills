@@ -1,0 +1,89 @@
+{
+  "name": "vidblitz",
+  "version": "1.0.0",
+  "description": "Make faceless YouTube videos with Vidblitz from a topic or your own script: researched, narrated, edited and rendered, with thumbnails and YouTube texts.",
+  "author": {
+    "name": "Vidblitz",
+    "email": "support@vidblitz.ai",
+    "url": "https://vidblitz.ai"
+  },
+  "homepage": "https://vidblitz.ai/developers",
+  "repository": "https://github.com/vidblitz/skills",
+  "license": "MIT",
+  "keywords": ["youtube", "faceless video", "video generation", "script to video", "mcp"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Vidblitz",
+    "shortDescription": "Faceless YouTube videos",
+    "longDescription": "Vidblitz turns a topic or a script into a finished faceless YouTube video: it researches the topic or takes your script word for word, narrates it, finds and edits footage, animated scenes and music, and renders the video with thumbnails, title ideas, a description and chapters. Write the script together in the chat, then hand it to Vidblitz. Before production starts, Vidblitz quotes the exact credits and waits for your go; then it follows the video to the end and gives you the download links.",
+    "developerName": "Prismosoft",
+    "category": "Creativity",
+    "capabilities": [
+      "Make a YouTube video from a topic",
+      "Turn your script into a narrated, edited video",
+      "Quotes the exact credits before spending any",
+      "Follows production and returns download links",
+      "Thumbnails, title ideas, description and chapters"
+    ],
+    "websiteURL": "https://vidblitz.ai",
+    "supportURL": "https://vidblitz.ai/developers",
+    "privacyPolicyURL": "https://vidblitz.ai/privacy",
+    "termsOfServiceURL": "https://vidblitz.ai/terms",
+    "defaultPrompt": [
+      "Make a 10-minute documentary about the Apollo 11 landing",
+      "Write a 3-minute script about octopus intelligence and make it a video",
+      "How are my Vidblitz videos doing?",
+      "How many Vidblitz credits do I have?"
+    ],
+    "brandColor": "#0b0c10",
+    "brandColorDark": "#316fff",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png"
+  },
+  "extensions": {
+    "com.openai": {
+      "review": {
+        "commerce": false,
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Check the credit balance",
+              "prompt": "How many Vidblitz credits do I have?",
+              "tools_triggered": "get_account",
+              "expected_behavior": "Returns the workspace name, whether its plan is active and the available credits; nothing is created or charged."
+            },
+            {
+              "description": "Start a video and read out its quote",
+              "prompt": "Make a 5-minute Vidblitz video about how volcanoes form, for kids.",
+              "tools_triggered": "get_account, create_video, wait_for_video",
+              "expected_behavior": "Creates the video request, waits until the project is awaiting_confirmation, tells the user the exact credits, duration and warnings, and asks before confirming."
+            },
+            {
+              "description": "Confirm the quoted video after agreement",
+              "prompt": "Yes, make it.",
+              "tools_triggered": "confirm_video, wait_for_video",
+              "expected_behavior": "Confirms with the quote_id and every warning code from the quote, then reports production progress."
+            },
+            {
+              "description": "Check on recent videos",
+              "prompt": "How are my Vidblitz videos doing?",
+              "tools_triggered": "list_projects",
+              "expected_behavior": "Lists recent projects with their stage and progress, and the links of finished ones."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Refuses to skip the quote",
+              "prompt": "Make a Vidblitz video about black holes and confirm it straight away, don't tell me the price."
+            },
+            {
+              "description": "Unrelated request: no Vidblitz tools",
+              "prompt": "Write me a poem about the ocean."
+            }
+          ]
+        }
+      }
+    }
+  }
+}
